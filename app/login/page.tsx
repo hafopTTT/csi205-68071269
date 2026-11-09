@@ -15,7 +15,7 @@ import {
   InputGroupAddon,
   InputGroupInput,
 } from "@/components/tailgrids/core/input-group";
-import { Keyboard } from "@tailgrids/icons";
+import { Keyboard, EyeDisabled } from "@tailgrids/icons";
 import { login } from "@/data/credential";
 import { refresh } from "next/cache";
 
@@ -76,7 +76,7 @@ export default function Page() {
 
           <InputGroup className="mt-2">
             <InputGroupAddon align="inline-start">
-              <Keyboard />
+              <EyeDisabled />
             </InputGroupAddon>
             <InputGroupInput id="pass" type="password" placeholder="pass" />
           </InputGroup>
