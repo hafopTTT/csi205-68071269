@@ -79,7 +79,6 @@ export default function Page() {
               <Keyboard />
             </InputGroupAddon>
             <InputGroupInput id="pass" type="password" placeholder="pass" />
-            <InputGroupAddon align="inline-end">@company.com</InputGroupAddon>
           </InputGroup>
         </DialogBody>
 
