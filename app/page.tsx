@@ -1,69 +1,127 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import { checkLogin } from "@/utils/login";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+
+export default function Page() {
+  const router = useRouter()
+  useEffect(() => checkLogin(router, "/"), [router])
+  
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <section className="home-page">
+      <div className="home-card">
+        <div className="home-profile">
+          <Image
+            className="home-photo"
+            src="/profile/profile.jpg"
+            alt="68071269 สิรวิชญ์ สัปทน"
+            width={400}
+            height={400}
+            priority
+          />
+          <div className="home-caption">
+            <strong>68071269 Sirawit Sappathon</strong>
+            <div>Computer Science and Software Development Innovation Dept. (CSI)</div>
+            <div>Sripatum University (SPU)</div>
+          </div>
+        </div>
+
+        <div className="home-content">
+          <h2 className="home-heading">Career Objective</h2>
+          <p>
+            Seeking a position in the field of{" "}
+            <span className="home-highlight">
+              Computer Science and Software Development
+            </span>
+            , with a focus on{" "}
+            <strong>software and application development</strong>. I aim to
+            apply the knowledge gained from my studies—including{" "}
+            <strong>programming</strong>,{" "}
+            <strong>system design and development</strong>, and{" "}
+            <strong>technical problem-solving</strong>—to real-world projects,
+            while further honing my skills to foster{" "}
+            <span className="home-highlight">
+              long-term professional growth
+            </span>{" "}
+            within the technology sector.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+      </div>
+
+      <style>{`
+        .home-page {
+          width: min(100% - 32px, 900px);
+          margin: 20px auto 40px;
+          color: #172033;
+        }
+        .home-card {
+          display: flex;
+          align-items: flex-start;
+          gap: 24px;
+          padding: 16px;
+          border: 1px solid #ccc;
+          border-radius: 10px;
+          background: white;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+          box-sizing: border-box;
+        }
+        .home-profile {
+          flex: 0 0 280px;
+          overflow: hidden;
+          border: 1px solid #ccc;
+          border-radius: 8px;
+          background: #fafafa;
+        }
+        .home-photo {
+          display: block;
+          width: 100%;
+          height: auto;
+          aspect-ratio: 1;
+          object-fit: cover;
+        }
+        .home-caption {
+          padding: 10px 12px;
+          font-size: 0.85rem;
+          line-height: 1.6;
+        }
+        .home-content {
+          flex: 1;
+          min-width: 0;
+          line-height: 1.7;
+        }
+        .home-heading {
+          margin: 0 0 8px;
+          font-size: 1.25rem;
+          color: #0d6efd;
+        }
+        .home-content p {
+          margin: 0;
+          text-align: justify;
+        }
+          .home-content strong {
+          color: #0d6efd;
+            font-weight: 700;
+        }
+      .home-highlight {
+          font-weight: 700;
+          color: #172033;
+        background: linear-gradient(transparent 60%, #ffe58f 60%);
+          padding: 0 2px;
+        }
+        @media (max-width: 640px) {
+          .home-card {
+            flex-direction: column;
+            align-items: stretch;
+          }
+          .home-profile {
+            flex-basis: auto;
+            max-width: 320px;
+            margin: 0 auto;
+          }
+        }
+      `}</style>
+    </section>
   );
 }
