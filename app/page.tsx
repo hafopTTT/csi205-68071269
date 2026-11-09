@@ -15,7 +15,7 @@ export default function Page() {
         <div className="home-profile">
           <Image
             className="home-photo"
-            src="/profile/profile.jpg"
+            src="/profile/Profile.jpg"
             alt="68071269 สิรวิชญ์ สัปทน"
             width={400}
             height={400}
